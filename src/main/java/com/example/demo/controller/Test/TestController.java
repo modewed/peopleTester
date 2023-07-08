@@ -43,6 +43,7 @@ public class TestController {
     @GetMapping("/tests")
     public String getAllTests(Model model) {
         try {
+
             List<Test> tests = new ArrayList<Test>();
             List<HashMap> retTests = new ArrayList<HashMap>();
             testRepository.findAll().forEach(tests::add);
