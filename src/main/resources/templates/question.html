@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Question</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Question</h1>
+<form action="/question/update" method="post">
+    <label for="id">id</label><br><input th:value="${id}" id="id" name="id" type="text">
+    <br><br>
+    <label for="description">description</label><br><input th:value="${description}" id="description" name="description"
+                                                           type="text">
+    <br><br>
+    <label for="title">title</label><br><input th:value="${title}" id="title" name="title" type="text">
+    <br><br>
+    <label for="title">testId</label><br><input th:value="${testId}" id="testId" name="testId" type="text">
+    <br><br>
+    <input type="submit">
+</form>
+
+
+</body>
+</html>

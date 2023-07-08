@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create question</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Create question</h1>
+<form action="/question/create/new" method="post">
+    <div th:if="${testId != null}">
+        <input th:value="${testId}" id="testId1" name="testId" type="hidden">
+
+    </div>
+    <div th:if="${testId == null}">
+        <label for="testId2">company_id</label><br><input value="" id="testId2" name="testId" type="text">
+        <br><br>
+    </div>
+    <label for="description">description</label><br><input id="description" name="description" type="text">
+    <br><br>
+    <label for="title">title</label><br><input id="title" name="title" type="text">
+    <br><br>
+
+    <input type="submit">
+</form>
+
+
+<!--<label  for="id">id</label><br><input th:value="${id}" id="id" name="id" type="text">-->
+<!--<br><br>-->
+<!--<label  for="description">description</label><br><input th:value="${description}" id="description" name="description" type="text">-->
+<!--<br><br>-->
+<!--<label  for="title">title</label><br><input th:value="${title}" id="title" name="title" type="text">-->
+<!--<br><br>-->
+<!--<table th:if="${questions != null}" border="1">-->
+<!--  <tr>-->
+<!--    <td>Title</td>-->
+<!--    <td>Description</td>-->
+<!--  </tr>-->
+<!--  <tr th:each="question : ${questions}">-->
+<!--    <td><a href="#" th:text="${question.title}">Title .. .</a></td>-->
+<!--    <td th:text="${question.description}">Text ...</td>-->
+<!--  </tr>-->
+<!--</table>-->
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+<input id="quantityQuestions" type="hidden" th:value="${quantityQuestions}">
+<input id="testId" type="hidden" th:value="${id}">
+<form id="mainForm">
+
+
+    <h1 th:text="${title}">Title ...</h1>
+    <p th:text="${description}">Description ...</p>
+    <div th:if="${questions != null}">
+        <div th:each="question : ${questions}">
+            <h2 th:text="${question.title}">Title...</h2>
+            <h3 th:text="${question.description}">description...</h3>
+            <input th:id="'que' + ${question.id}" type="text">
+
+        </div>
+
+
+    </div>
+    <br><br>
+    <div onclick="runtest()">
+        Send
+
+    </div>
+
+
+</form>
+
+<script>
+    let quantityQuestions = $("#quantityQuestions").val();
+    let Form = $("#mainForm");
+    let testId = $("#testId").val();
+
+    function runtest() {
+        let requestArray = [];
+        for (let i = 0; i < quantityQuestions; i++) {
+            let tmp =
+                {
+                    id: Form[0][i].id,
+                    value: Form[0][i].value
+                };
+            requestArray.push(tmp);
+        }
+        console.log(JSON.stringify(requestArray));
+        $.ajax({
+            url: '/api/runtest/result/' + testId,         /* Куда отправить запрос */
+            method: 'post',             /* Метод запроса (post или get) */
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(requestArray),
+            success: function (data) {   /* функция которая будет выполнена после успешного запроса.  */
+                console.log(data); /* В переменной data содержится ответ от index.php. */
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

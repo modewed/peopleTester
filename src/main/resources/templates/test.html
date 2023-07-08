@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Test</h1>
+<form action="/test/update" method="post">
+    <label for="id">id</label><br><input th:value="${id}" id="id" name="id" type="text">
+    <br><br>
+    <label for="description">description</label><br><input th:value="${description}" id="description" name="description"
+                                                           type="text">
+    <br><br>
+    <label for="title">title</label><br><input th:value="${title}" id="title" name="title" type="text">
+    <br><br>
+    <input type="submit">
+    <br><br>
+</form>
+<br><br>
+<a th:href="'/question/create?testId='+${id}">Create new question</a>
+<table th:if="${questions != null}" border="1">
+    <tr>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Delete</td>
+    </tr>
+    <tr th:each="question : ${questions}">
+        <td><a th:href="'/question?id='+${question.id}" th:text="${question.title}">Title .. .</a></td>
+        <td th:text="${question.description}">Text ...</td>
+        <td><a th:href="'/question/delete?id='+${question.id}">Delete</a></td>
+    </tr>
+</table>
+<br><br>
+<a th:href="'/result/create?testId='+${id}">Create new result</a>
+<table th:if="${questions != null}" border="1">
+    <tr>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Delete</td>
+    </tr>
+    <tr th:each="result : ${results}">
+        <td><a th:href="'/result?id='+${result.id}" th:text="${result.title}">Title .. .</a></td>
+        <td th:text="${result.description}">Text ...</td>
+        <td><a th:href="'/result/delete?id='+${result.id}">Delete</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
